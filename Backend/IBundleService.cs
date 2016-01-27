@@ -1,6 +1,6 @@
 using Microsoft.AspNet.Mvc.Rendering;
 
-namespace Services {
+namespace DasJott.Common.Services {
   public interface IBundleService {
     void IncludeStyle(string bundleName);
     void IncludeScript(string bundleName);

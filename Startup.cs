@@ -1,8 +1,9 @@
-using DasJott.Backend.Services;
 using Microsoft.AspNet.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Services;
+using DasJott.Backend.Services;
+using DasJott.Common.Services;
+using DasJott.Database;
 
 namespace HelloMvc
 {
@@ -13,6 +14,10 @@ namespace HelloMvc
       services.AddMvc();
       services.AddLogging();
       services.AddScoped<IBundleService, BundleService>();
+      
+      services.AddEntityFramework()
+      .AddDbContext<DjContext>();
+
       /*
       // Adds a pre-existing instance that will be referenced
       IServiceCollection AddInstance<TService>(TService implementationInstance);

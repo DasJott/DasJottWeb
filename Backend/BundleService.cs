@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Linq;
-using Services;
+using DasJott.Common.Services;
 
 namespace DasJott.Backend.Services {
   public class BundleService : IBundleService {

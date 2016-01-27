@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using DasJott.Database;
 
 namespace DasJott.Models
 {
-  public class BlogEntry
+  public class BlogEntry : Entity
   {
+    public int PK_ID { get; set; }
+    
     [Required]
     [MinLength(4)]
     public string Headline { get; set; }

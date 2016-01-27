@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Backend.Services.Fun {
+namespace DasJott.Backend.Fun {
   public class GetRandom {
     private static Random _random = new Random();
     public static string OK {

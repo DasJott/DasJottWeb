@@ -42,6 +42,7 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final",
     "EntityFramework.Sqlite": "7.0.0-rc1-final",
+    "EntityFramework.Sqlite.Design": "7.0.0-rc1-final",
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "Less": "3.0",
     "jQuery": "2.2.0",
@@ -54,7 +55,9 @@
 
   "commands": {
     "debug": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5004",
-    "release": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5004 --configuration Release"
+    "release": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5004 --configuration Release",
+    "add-migration": "EntityFramework.Commands migrations add",
+    "update-database": "EntityFramework.Commands database update"
   },
 
   "scripts": {
