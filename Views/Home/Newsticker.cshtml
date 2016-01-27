@@ -1,0 +1,9 @@
+@using MvcSample.Web
+@using MvcSample.Web.Models
+@model HomeController.TickerModel
+
+<div>
+  @foreach (var news in Model.News) {
+    <p>@news</p><br>
+  }
+</div>

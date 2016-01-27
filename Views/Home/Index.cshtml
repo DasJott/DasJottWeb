@@ -1,0 +1,42 @@
+﻿@using MvcSample.Web.Models
+@model HomeContent
+@inject Services.IBundleService Bundler
+
+@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Home";
+  Bundler.IncludeScript("home");
+}
+
+@if (Model.Articles != null && Model.Articles.Count() > 0) {
+  foreach (var article in Model.Articles) {
+    <div class="panel panel-default infopanel" style="display: none;">
+      <div class="panel-heading">
+        @article.Headline
+      </div>
+      <div class="panel-body">
+        @article.Content
+      </div>
+    </div>
+  }
+} else {
+  <div class="panel panel-default infopanel" style="display: none;">
+    <div class="panel-heading">
+      Nix Neues
+    </div>
+    <div class="panel-body">
+      Entweder handelt es sich hier um einen Fehler oder es gibt tatsächlich so überhaupt nichts zu vermelden.
+    </div>
+  </div>
+}
+
+
+
+<div class="panel panel-default" id="ajaxTicker" style="display: none;">
+  <div class="panel-heading">
+    Ajax-Newsticker von <a href="http://www.der-postillon.com/" target="_blank">Der Postillon</a>
+  </div>
+  <div class="panel-body" id="ajaxTickerBody">
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+#ignore some files and directories
+
+/bin
+/wwwroot
+/project.lock.json
+
+# ignore css files as the should be compiled from less
+Content/css/main.css
+
+# jQuery
+/Content/js/jquery-*.js
+
+#jQuery-UI
+/Content/js/jquery-ui-*.js
+/Content/css/themes
+
+# bootstrap
+/Content/fonts/glyphicons-halflings-regular.*
+/Content/less/bootstrap
+/Content/js/bootstrap.js
+
+# bootbox.js
+/Content/js/bootbox.js
+
+# bootstrap-chosen
+/Content/less/chosen
+/Content/img/chosen-sprite.png
+/Content/js/chosen.jquery.js
+
+# bundle results are generated
+/Content/bundle.result.json

@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "authors": ["Das Jott"],
+  "description": "Testprojekt. Muss doch irgendwie gehen!",
+  "webroot": "wwwroot",
+
+  "exclude": [
+    "wwwroot"
+  ],
+
+  "packExclude": [
+    "**.kproj",
+    "**.user",
+    "**.vspscc"
+  ],
+
+  "configurations": {
+    "Debug": {
+      "compilationOptions": {
+        "define": ["DEBUG", "TRACE"],
+        "optimize": false
+      }
+    },
+    "Release": {
+      "compilationOptions": {
+        "define": ["RELEASE", "TRACE"],
+        "optimize": true
+      }
+    }
+  },
+  
+  "frameworks": {
+    "dnx451": {}
+  },
+
+  "dependencies": {
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final",
+    "EntityFramework.Sqlite": "7.0.0-rc1-final",
+    "EntityFramework.Commands": "7.0.0-rc1-final",
+    "Less": "3.0",
+    "jQuery": "2.2.0",
+    "jQuery.UI.Combined": "1.11.4",
+    "Bootstrap.Less": "3.3.6",
+    "Bootbox.JS": "4.4.0",
+    "bootstrap.chosen": "1.0.0",
+    "HtmlAgilityPack": "1.4.9"
+  },
+
+  "commands": {
+    "debug": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5004",
+    "release": "Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:5004 --configuration Release"
+  },
+
+  "scripts": {
+    "prebuild": "",
+    "postbuild": "",
+    "prepack": "",
+    "postpack": "",
+    "prepublish": "",
+    "postpublish": "",
+    "prerestore": "",
+    "postrestore": "%project:Directory%/.scripts/installContents.sh %project:Directory%",
+    "prepare": ""
+  }
+}

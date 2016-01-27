@@ -1,0 +1,23 @@
+{
+  "version": "0.1.0",
+  "command": "gulp",
+  "isShellCommand": true,
+  "tasks": [
+    {
+      "taskName": "default",
+      "isBuildCommand": true,
+      "showOutput": "always",
+      "isWatching": true
+    }
+  ]
+}
+
+
+// // Less configuration
+// {
+//     "version": "0.1.0",
+//     "command": "lessc",
+//     "isShellCommand": true,
+//     "args": ["Content/less/main.less", "Content/main.css"]
+// }
+

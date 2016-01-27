@@ -1,0 +1,167 @@
+@import "bootstrap/bootstrap.less";
+@import "chosen/bootstrap-chosen.less";
+@import "jott/LoadSpinner.less";
+
+@jott-color: #339966;
+@brand-primary: @jott-color;
+@panel-default-border: @jott-color;
+
+@nav-tabs-border-color: @jott-color;
+@nav-tabs-active-link-hover-border-color: @jott-color;
+@nav-tabs-justified-link-border-color: @jott-color;
+
+@pagination-border: @jott-color;
+@pagination-hover-border: @jott-color;
+@pagination-disabled-border: @jott-color;
+
+@modal-header-border-color: @jott-color;
+@modal-content-border-color: fadein(@jott-color, 20%);
+
+@chosen-sprite-path: "img/chosen-sprite.png";
+
+body, html {
+  height: 100%;
+}
+
+.main-jumbotron {
+  .text-center;
+  .no-lr-padding;
+  padding-top: 10px;
+  padding-bottom: 0;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border: 1px solid @jott-color;
+  border-top: none;
+  background-image: linear-gradient(180deg, lighten(@jott-color, 40%), #FFFFFF);
+}
+
+#mainPicJott {
+  height: 130px;
+  width: auto;
+}
+
+.main-headline {
+  text-align: left;
+  font-weight: bolder;
+  margin-top: -0.5em;
+}
+
+#bodyContent {
+  .no-lr-padding;
+  padding-bottom: 40px;
+}
+
+.panel-heading {
+  font-size: larger;
+  font-weight: bold;
+}
+
+footer {
+  width: 100%;
+  border-top: 1px solid @gray-dark;
+
+  &.footer {
+    padding: 10px;
+    color: black;
+    bottom: 0;
+    position: fixed;
+    background-color: @gray-lighter !important;
+  }
+
+  &.contextFooter {
+    padding: 10px;
+    position: fixed;
+    height: 54px;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: @gray-lighter !important;
+  }
+}
+
+button > span {
+  margin-right: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.vspace-0 {
+  margin-bottom: 0px !important;
+}
+
+.vspace-10 {
+  margin-bottom: 10px !important;
+}
+
+.vspace-20 {
+  margin-bottom: 20px !important;
+}
+
+.width-100-percent {
+  width: 100% !important;
+}
+
+.no-l-padding {
+  padding-left: 0 !important;
+}
+
+.no-r-padding {
+  padding-right: 0 !important;
+}
+
+.no-lr-padding {
+  .no-l-padding;
+  .no-r-padding;
+}
+
+.glyphicon-24 {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.glyphicon-32 {
+  font-size: 32px;
+  line-height: 32px;
+}
+
+.glyphicon-16 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+ul.nav.nav-pills.nav-justified {
+  li:hover a {
+    background-color: lighten(@nav-pills-active-link-hover-bg, 40%);
+  }
+  li.active:hover a {
+    background-color: @nav-pills-active-link-hover-bg;
+  }
+}
+
+.modal.modal-wide .modal-dialog {
+  width: 90%;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
+
+.nav-tabs-contents {
+  margin-top: -2px;
+  border: 1px solid @nav-tabs-border-color;
+  border-top: none;
+  border-radius: @border-radius-base;
+}

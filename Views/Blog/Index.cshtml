@@ -1,0 +1,18 @@
+@using MvcSample.Web.Models
+@model BlogEntry
+@inject Services.IBundleService Bundler
+
+@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Blog";
+  //Bundler.IncludeScript("blog");
+}
+
+<div class="panel panel-default" id="ajaxTicker" style="display: none;">
+  <div class="panel-heading">
+    Ajax-Newsticker von <a href="http://www.der-postillon.com/" target="_blank">Der Postillon</a>
+  </div>
+  <div class="panel-body" id="ajaxTickerBody">
+  </div>
+</div>
+
