@@ -2,12 +2,12 @@
 $(function() {
   setMenuSelection();
   setupAbout();
-  
+
   // smooth page changes
   setSmoothMenu(100, 300);
 });
 
-var loadSpinner = new JottLoadSpinner();
+window.loadSpinner = new JottLoadSpinner();
 //loadSpinner.show();
 $('.chosen-select').chosen();
 
@@ -29,7 +29,7 @@ function setSmoothMenu(fadeOut, fadeIn) {
       return false;
     }
     return false;
-  });  
+  });
 }
 
 // make sure, the correct menu item is selected
@@ -40,7 +40,7 @@ function setMenuSelection() {
       var link = $(a).attr("href");
       if (link.endsWith(path)) {
         $(a).parent().addClass('active');
-        document.title = $(a).text() + " - " + document.title; 
+        document.title = $(a).text() + " - " + document.title;
       }
     });
   } else {
@@ -56,7 +56,7 @@ function setupAbout() {
     // reset previous selection
     $tabs.removeClass('active');
     $contents.hide();
-    
+
     // make new selecction
     $($tabs.get(num)).addClass('active');
     $($contents.get(num)).fadeIn(100);
