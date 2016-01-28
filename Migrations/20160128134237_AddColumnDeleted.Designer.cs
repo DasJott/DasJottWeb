@@ -8,9 +8,10 @@ using DasJott.Database;
 namespace DasJottWeb.Migrations
 {
     [DbContext(typeof(DjContext))]
-    partial class DjContextModelSnapshot : ModelSnapshot
+    [Migration("20160128134237_AddColumnDeleted")]
+    partial class AddColumnDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348");
