@@ -21,15 +21,7 @@ namespace DasJott.Database
     {
       modelBuilder.Entity<Entity>()
         .HasKey(e => e.ID)
-        .HasName("ID");
-
-      modelBuilder.Entity<Entity>()
-        .Property(e => e.Created)
-        .ValueGeneratedOnAdd();
-
-      modelBuilder.Entity<Entity>()
-        .Property(e => e.Updated)
-        .ValueGeneratedOnAddOrUpdate();
+        .ForSqliteHasName("ID");
 
       modelBuilder.Ignore<Entity>();
     }
@@ -46,6 +38,7 @@ namespace DasJott.Database
           case EntityState.Added:
             e.Entity.Updated = DateTime.Now;
             e.Entity.Created = DateTime.Now;
+            e.Entity.Deleted = false;
             e.Entity.OnCreate();
             break;
         }
