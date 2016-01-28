@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using DasJott.Models;
 using Microsoft.Data.Entity;
@@ -32,5 +33,25 @@ namespace DasJott.Database
 
       modelBuilder.Ignore<Entity>();
     }
+    
+    public override int SaveChanges()
+    {
+      foreach (var e in this.ChangeTracker.Entries<Entity>()) {
+        switch (e.State)
+        {
+          case EntityState.Modified:
+            e.Entity.Updated = DateTime.Now;
+            e.Entity.OnUpdate();
+            break;
+          case EntityState.Added:
+            e.Entity.Updated = DateTime.Now;
+            e.Entity.Created = DateTime.Now;
+            e.Entity.OnCreate();
+            break;
+        }
+      }
+      return base.SaveChanges();
+    }
+    
   }
 }
