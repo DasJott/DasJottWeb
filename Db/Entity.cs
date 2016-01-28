@@ -5,16 +5,13 @@ namespace DasJott.Database
   public abstract class Entity
   {
     public int ID { get; set; }
+    
+    /// is automaticly set
     public DateTime Created { get; set; }
+    /// is automaticly set
     public DateTime Updated { get; set; }
     
-    internal virtual void OnCreate()
-    {
-      Created = DateTime.Now;
-    }
-    internal virtual void OnUpdate()
-    {
-      Updated = DateTime.Now;
-    }
+    internal virtual void OnCreate() {}
+    internal virtual void OnUpdate() {}
   }
 }
