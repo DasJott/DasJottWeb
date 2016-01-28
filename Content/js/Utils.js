@@ -7,7 +7,7 @@ Utils.urlParam = function (name) {
 }
 
 Utils.urlPath = function(fromString) {
-  var path = new RegExp('^http[s]?://[^/]+/([^?#]*)$').exec(fromString ? fromString : window.location.href); 
+  var path = new RegExp('^http[s]?://[^/]+/([^?#]*)$').exec(fromString ? fromString : window.location.href);
   return path != null && path.length > 0 ? path[1] : "";
 }
 
@@ -36,3 +36,8 @@ Utils.restoreForm = function (form, data, bChange) {
   }
 }
 
+Utils.checkNumber = function (elem) {
+  var num = $(elem).val();
+  num = num.replace(/[^0-9]+/g, '');
+  $(elem).val(num);
+}
