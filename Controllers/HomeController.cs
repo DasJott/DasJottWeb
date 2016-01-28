@@ -4,23 +4,31 @@ using DasJott.Models;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using DasJott.Backend.Services;
+using DasJott.Database;
+using System;
 
 namespace DasJott.Controllers
 {
     public class HomeController : BaseController
   {
     protected readonly ILogger<HomeController> Logger;
-    public HomeController(ILogger<HomeController> log)
+    protected DjContext db;
+    public HomeController(ILogger<HomeController> log, DjContext context)
     {
       Logger = log;
+      db = context;
     }
+
+    public class HomeContent
+    {
+      public List<NewsArticle> Articles { get; set; }
+    }
+
     public IActionResult Index()
     {
       Logger.LogVerbose("Index called");
       
-      var content = new HomeContent() {
-        Articles = new List<HomeContent.Item>()
-      };
+      var content = new HomeContent();
 
       return View(content);
     }
@@ -82,11 +90,12 @@ namespace DasJott.Controllers
 
     public User CreateUser()
     {
+      var birth = DateTime.Parse("1979-10-15");
       User user = new User()
       {
         Name = "Das Jott",
         ShortInfo = "Die Welt des zehnten Buchstaben aus dem Alphabet",
-        Address = "Home sweet home"
+        Birthday = birth
       };
 
       return user;

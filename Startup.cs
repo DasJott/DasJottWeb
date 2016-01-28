@@ -16,6 +16,7 @@ namespace HelloMvc
       services.AddScoped<IBundleService, BundleService>();
       
       services.AddEntityFramework()
+      .AddSqlite()
       .AddDbContext<DjContext>();
 
       /*

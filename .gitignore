@@ -4,6 +4,9 @@
 /wwwroot
 /project.lock.json
 
+# my personal db
+/Db/DasJott.db
+
 # ignore css files as the should be compiled from less
 Content/css/main.css
 

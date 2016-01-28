@@ -1,6 +1,7 @@
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using DasJott.Models;
+using System.Collections.Generic;
 
 namespace DasJott.Controllers
 {
@@ -15,16 +16,15 @@ namespace DasJott.Controllers
     public IActionResult Index()
     {
       Logger.LogVerbose("Index called");
+
+      var content = new BlogContent();
       
-      var entry = new BlogEntry() {
-        Headline = "",
-        Text = "",
-        Date = "",
-        Next = 1,
-        Previous = 0
-      };
-      
-      return View(entry);
+      return View(content);
     }
+  }
+  
+  public class BlogContent
+  {
+    public List<BlogEntry> Articles { get; set; }
   }
 }

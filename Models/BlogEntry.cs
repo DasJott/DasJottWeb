@@ -1,20 +1,19 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using DasJott.Database;
 
 namespace DasJott.Models
 {
   public class BlogEntry : Entity
   {
-    public int PK_ID { get; set; }
-    
     [Required]
     [MinLength(4)]
+    [Column(TypeName = "varchar(20)")]
     public string Headline { get; set; }
+
     [Required]
     [MinLength(4)]
+    [Column(TypeName = "varchar(4000)")]
     public string Text { get; set; }
-    public string Date { get; set; }
-    public int Next { get; set; }
-    public int Previous { get; set; }
   }
 }

@@ -1,5 +1,5 @@
 @using MvcSample.Web.Models
-@model BlogEntry
+@model BlogContent
 @inject Services.IBundleService Bundler
 
 @{
@@ -8,11 +8,25 @@
   //Bundler.IncludeScript("blog");
 }
 
-<div class="panel panel-default" id="ajaxTicker" style="display: none;">
-  <div class="panel-heading">
-    Ajax-Newsticker von <a href="http://www.der-postillon.com/" target="_blank">Der Postillon</a>
+@if (Model.Articles != null && Model.Articles.Count() > 0) {
+  foreach (var article in Model.Articles) {
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        @article.Headline
+      </div>
+      <div class="panel-body">
+        @article.Text
+      </div>
+    </div>
+  }
+} else {
+  <div class="panel panel-primary" id="defaultBlogArticle">
+    <div class="panel-heading">
+      ++++ BREAKING ++++
+    </div>
+    <div class="panel-body">
+      Gähnende Leere im Blog von DasJott.de!
+    </div>
   </div>
-  <div class="panel-body" id="ajaxTickerBody">
-  </div>
-</div>
+}
 
