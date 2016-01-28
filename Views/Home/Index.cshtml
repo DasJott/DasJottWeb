@@ -1,6 +1,6 @@
-﻿@using DasJott.Models
+﻿@using DasJott.ViewModels
 @model HomeContent
-@inject Services.IBundleService Bundler
+@inject DasJott.Common.Services.IBundleService Bundler
 
 @{
   Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +10,7 @@
 
 @if (Model.Articles != null && Model.Articles.Count() > 0) {
   foreach (var article in Model.Articles) {
-    <div class="panel panel-default infopanel" style="display: none;">
+    <div class="panel panel-default newspanel" style="display: none;">
       <div class="panel-heading">
         @article.Headline
       </div>
@@ -20,7 +20,7 @@
     </div>
   }
 } else {
-  <div class="panel panel-default infopanel" style="display: none;">
+  <div class="panel panel-default newspanel" style="display: none;">
     <div class="panel-heading">
       Nix Neues
     </div>
@@ -29,14 +29,3 @@
     </div>
   </div>
 }
-
-
-
-<div class="panel panel-default" id="ajaxTicker" style="display: none;">
-  <div class="panel-heading">
-    Ajax-Newsticker von <a href="http://www.der-postillon.com/" target="_blank">Der Postillon</a>
-  </div>
-  <div class="panel-body" id="ajaxTickerBody">
-  </div>
-</div>
-

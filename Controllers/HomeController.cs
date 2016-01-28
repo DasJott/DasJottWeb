@@ -5,30 +5,29 @@ using System.Linq;
 using Microsoft.Extensions.Logging;
 using DasJott.Backend.Services;
 using DasJott.Database;
+using DasJott.Database.Extensions;
 using System;
+using DasJott.ViewModels;
 
 namespace DasJott.Controllers
 {
-    public class HomeController : BaseController
+  public class HomeController : BaseController
   {
     protected readonly ILogger<HomeController> Logger;
     protected DjContext db;
+
     public HomeController(ILogger<HomeController> log, DjContext context)
     {
       Logger = log;
       db = context;
     }
 
-    public class HomeContent
-    {
-      public List<NewsArticle> Articles { get; set; }
-    }
-
     public IActionResult Index()
     {
       Logger.LogVerbose("Index called");
-      
+
       var content = new HomeContent();
+      content.Articles = db.NewsArticles.GetList().ToList();
 
       return View(content);
     }
@@ -40,7 +39,7 @@ namespace DasJott.Controllers
 
       using (var log = Logger.BeginScope("Getting newsticker using WebService")) {
         var web = new WebService(Logger);
-        
+
         string tickerText = null;
         var doc = web.RequestHtml("http://www.der-postillon.com/search/label/Newsticker");
         if (doc != null) {
