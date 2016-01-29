@@ -14,13 +14,15 @@ namespace DasJott.Controllers
     public IActionResult Ajax()
     {
       Logger.LogVerbose("Ajax called");
-      return View("NotYet");
+      return View("Ajax");
     }
+
     public IActionResult Jquery()
     {
       Logger.LogVerbose("Jquery called");
       return View("NotYet");
     }
+
     public IActionResult Design()
     {
       Logger.LogVerbose("Design called");

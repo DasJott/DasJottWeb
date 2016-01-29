@@ -1,9 +1,8 @@
 @using DasJott.Models
 @model BlogContent
-@inject Services.IBundleService Bundler
+@inject DasJott.Common.Services.IBundleService Bundler
 
 @{
-  Layout = "~/Views/Shared/_Layout.cshtml";
   ViewBag.Title = "Blog";
   //Bundler.IncludeScript("blog");
 }

@@ -27,7 +27,7 @@ namespace DasJott.Controllers
       Logger.LogVerbose("Index called");
 
       var content = new HomeContent();
-      content.Articles = db.NewsArticles.GetList().ToList();
+      content.Articles = db.NewsArticles.GetList().OrderByDescending(x => x.Updated).ToList();
 
       return View(content);
     }

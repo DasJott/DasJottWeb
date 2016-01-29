@@ -1,32 +1,53 @@
 /* global bootbox */
 $(function() {
+
   setMenuSelection();
   setupAbout();
 
+  // load all links within the page async
+  //setAsyncContentLoading(100, 300);
+
   // smooth page changes
-  setSmoothMenu(100, 300);
+  setupAsyncSectionLoading(100, 300);
+  console.debug("main.js loaded");
 });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 window.loadSpinner = new JottLoadSpinner();
-//loadSpinner.show();
+
 $('.chosen-select').chosen();
 
 // smooth page changes from main menu
-function setSmoothMenu(fadeOut, fadeIn) {
+function setupAsyncSectionLoading(fadeOut, fadeIn) {
   if (!fadeOut)  { fadeOut = 300; }
   if (!fadeIn) { fadeIn = fadeOut; }
 
-  $('#bodyContent').fadeIn(fadeIn);
+  var $content = $('#bodyContent');
+
+  $content.fadeIn(fadeIn);
   $('#mainMenu > li').click(function() {
     var $elem = $(this);
     var $prev = $elem.parent().find("li.active");
     if (!$elem.hasClass('active')) {
       $prev.removeClass('active');
       $elem.addClass('active');
-      $('#bodyContent').fadeOut(fadeOut, function() {
-        document.location.pathname = $elem.find('a').attr("href");
+      $content.fadeOut(fadeOut, function() {
+        var $a = $elem.find('a');
+        var url = $a.attr("href")
+        var title = $a.text();
+        console.debug("menu navigation: " + url);
+        if (url == '/') {
+          document.location.pathname = url;
+        } else {
+          console.debug("Ajax loading");
+          $content.load(url, '', function(responseText, textStatus, jqXHR) {
+            console.debug("loading complete: " + textStatus);
+            document.title = title + " - " + document.title;
+            $content.fadeIn(fadeIn);
+          })
+        }
       });
-      return false;
     }
     return false;
   });

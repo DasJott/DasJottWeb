@@ -1,18 +1,7 @@
 $(function() {
-  $('.infopanel').first().removeClass('panel-default').addClass('panel-primary');
+  // first one is primary panel
+  $('.newspanel').first().removeClass('panel-default').addClass('panel-primary');
   fadeNewspanels();
-
-  $('#clickMe').click(function() {
-    window.loadSpinner.show();
-    var url = "/home/newsticker";
-    var data = '';
-    $('#ajaxTickerBody').load(url, data, function( responseText, textStatus, jqXHR ) {
-      $('.infopanel').hide();
-      window.loadSpinner.hide();
-      $('#ajaxTicker').fadeIn();
-    });
-  });
-  window.loadSpinner.hide();
 });
 
 function fadeNewspanels()
