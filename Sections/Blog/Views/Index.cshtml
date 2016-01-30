@@ -1,0 +1,31 @@
+@using DasJott.Blog
+@model BlogContent
+@inject DasJott.Interfaces.Services.IBundleService Bundler
+
+@{
+  ViewBag.Title = "Blog";
+  //Bundler.IncludeScript("blog");
+}
+
+@if (Model.Articles != null && Model.Articles.Count() > 0) {
+  foreach (var article in Model.Articles) {
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        @article.Headline
+      </div>
+      <div class="panel-body">
+        @article.Text
+      </div>
+    </div>
+  }
+} else {
+  <div class="panel panel-primary" id="defaultBlogArticle">
+    <div class="panel-heading">
+      ++++ BREAKING ++++
+    </div>
+    <div class="panel-body">
+      Gähnende Leere im Blog von DasJott.de!
+    </div>
+  </div>
+}
+

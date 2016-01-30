@@ -24,7 +24,7 @@ createDir() {
 dirProject="$1";
 
 # check for Content directory
-dirContent="$dirProject/Content";
+dirContent="$dirProject/Sections/Common/Content";
 createDir $dirContent;
 
 # check for Content/img directory

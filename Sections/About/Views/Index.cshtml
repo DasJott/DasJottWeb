@@ -1,0 +1,37 @@
+@inject DasJott.Interfaces.Services.IBundleService Bundler
+@Bundler.IncludeBundle("about");
+
+<ul id="mainAboutSections" class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#">Über Das Jott</a></li>
+  <li><a href="#">Freizeitbeschäftigungen</a></li>
+  <li><a href="#">Beruflicher Werdegang</a></li>
+</ul>
+
+<div id="mainAboutContents" class="nav-tabs-contents">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+      </div>
+      <div class="col-md-4 col-xs-12 text-center">
+      </div>
+      <div class="col-md-4 col-xs-12 text-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+      </div>
+    </div>
+  </div>
+</div>
+
+@Bundler.RenderScript()

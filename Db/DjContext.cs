@@ -1,6 +1,8 @@
 using System;
 using System.IO;
-using DasJott.Models;
+using DasJott.Blog.Models;
+using DasJott.News.Models;
+using DasJott.Common.Models;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.PlatformAbstractions;
 
@@ -16,16 +18,20 @@ namespace DasJott.Database
       var path = PlatformServices.Default.Application.ApplicationBasePath;
       optionsBuilder.UseSqlite("Filename=" + Path.Combine(path, "Db", "DasJott.db"));
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Entity>()
         .HasKey(e => e.ID)
         .ForSqliteHasName("ID");
 
+      modelBuilder.Entity<Settings>()
+        .HasKey(e => e.ID)
+        .ForSqliteHasName("ID");
+
       modelBuilder.Ignore<Entity>();
     }
-    
+
     public override int SaveChanges()
     {
       foreach (var e in this.ChangeTracker.Entries<Entity>()) {
@@ -45,6 +51,6 @@ namespace DasJott.Database
       }
       return base.SaveChanges();
     }
-    
+
   }
 }

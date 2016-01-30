@@ -5,16 +5,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Linq;
-using DasJott.Common.Services;
+using DasJott.Interfaces.Services;
 
-namespace DasJott.Backend.Services {
+namespace DasJott.Services {
   public class BundleService : IBundleService {
     public enum RenderType {
       STYLES, SCRIPTS
     }
 
-    protected static string bundleResult = Path.Combine("Content", "bundle.result.json");
-    
+    protected static string bundleResult = Path.Combine(".", "bundle.result.json");
+
     private readonly IApplicationEnvironment _appEnvironment;
     private readonly Dictionary<RenderType, List<string>> _toBeRendered = new Dictionary<RenderType, List<string>>();
     private JObject _jObject = null;
@@ -55,10 +55,10 @@ namespace DasJott.Backend.Services {
       if (token != null) {
         return new HtmlString(token.ToString());
       }
-      
+
       return null;
     }
-    
+
     protected virtual void Include(RenderType key, string bundleName) {
       _logger.LogVerbose("Include called with parameters: {0} {1}", key.ToString(), bundleName);
       if (!_toBeRendered.ContainsKey(key)) {
@@ -69,7 +69,7 @@ namespace DasJott.Backend.Services {
       _toBeRendered[key].Insert(0, bundleName);
       _logger.LogVerbose("Include added {0} to key {0}", bundleName, key.ToString());
     }
-    
+
     protected virtual HtmlString Render(RenderType key) {
       _logger.LogVerbose("Render called with option {0}", key.ToString());
       var sb = new StringBuilder();
@@ -98,7 +98,7 @@ namespace DasJott.Backend.Services {
     {
       Include(RenderType.SCRIPTS, bundleName);
     }
-    
+
     public void IncludeBundle(string bundleName)
     {
       IncludeStyle(bundleName);

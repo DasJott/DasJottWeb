@@ -1,0 +1,17 @@
+@inject DasJott.Interfaces.Services.IBundleService Bundler
+
+@{
+  Bundler.IncludeScript("demos");
+}
+
+<button type="button" id="getNewsTicker" class="btn btn-primary vspace-20">Load Newsticker</button>
+
+<div class="panel panel-default" id="ajaxTicker" style="display: none;">
+  <div class="panel-heading">
+    Ajax-Newsticker von <a href="http://www.der-postillon.com/" target="_blank">Der Postillon</a>
+  </div>
+  <div class="panel-body" id="ajaxTickerBody">
+  </div>
+</div>
+
+@Bundler.RenderScript()

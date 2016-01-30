@@ -1,0 +1,57 @@
+﻿@inject DasJott.Interfaces.Services.IBundleService Bundler
+@{
+  Bundler.IncludeBundle("common");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewBag.Title - Das Jott</title>
+  @Bundler.RenderStyle()
+</head>
+<body>
+
+  <div id="modalContainer"></div>
+
+  <div class="container">
+    <div class="jumbotron main-jumbotron">
+      <div class="container vspace-10">
+        <div class="row">
+          <div class="col-md-4 col-xs-4 main-pic-jott">
+            <a href="#" type="button" class="btn" data-toggle="modal" data-target="#mainAbout">
+              <img src="~/img/jott_simps.png" id="mainPicJott" />
+            </a>
+          </div>
+          <div class="col-md-8 col-xs-8 main-headline">
+            <h1>Das Jott</h1>
+            <h3>Die Welt des zehnten Buchstaben des Alphabets</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid vspace-0 width-100-percent no-lr-padding">
+        <ul class="nav nav-pills nav-justified" id="mainMenu">
+          <li role="presentation"><a href="~/News/Index">Home</a></li>
+          <li role="presentation"><a href="~/Demos/Ajax">Ajax</a></li>
+          <li role="presentation"><a href="~/Demos/Jquery">jQuery</a></li>
+          <li role="presentation"><a href="~/Demos/Design">Design</a></li>
+          <li role="presentation"><a href="~/Blog/Index">Blog</a></li>
+        </ul>
+      </div>
+      <!--<button class="btn btn-default pull-right" id="clickMe">Klick mich</button>-->
+    </div>
+
+    <div class="container-fluid" id="bodyContent" style="display: none;">
+      @RenderBody()
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p class=""><b>&copy; @DateTime.Now.Year - DasJott.de</b></p>
+  </footer>
+  @Bundler.RenderScript()
+  @RenderSection("Scripts", false)
+
+</body>
+</html>

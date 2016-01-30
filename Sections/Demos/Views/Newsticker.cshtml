@@ -1,0 +1,8 @@
+@using DasJott.Demos.ViewModels
+@model TickerModel
+
+<div>
+  @foreach (var news in Model.News) {
+    <p>@news</p><br>
+  }
+</div>

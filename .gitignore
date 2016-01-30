@@ -7,28 +7,25 @@
 # my personal db
 /Db/DasJott.db
 
-# ignore css files as the should be compiled from less
-Content/css/main.css
-
 # jQuery
-/Content/js/jquery-*.js
+/Sections/Common/Content/js/jquery-*.js
 
 #jQuery-UI
-/Content/js/jquery-ui-*.js
-/Content/css/themes
+/Sections/Common/Content/js/jquery-ui-*.js
+/Sections/Common/Content/css/themes
 
 # bootstrap
-/Content/fonts/glyphicons-halflings-regular.*
-/Content/less/bootstrap
-/Content/js/bootstrap.js
+/Sections/Common/Content/fonts/glyphicons-halflings-regular.*
+/Sections/Common/Content/less/bootstrap
+/Sections/Common/Content/js/bootstrap.js
 
 # bootbox.js
-/Content/js/bootbox.js
+/Sections/Common/Content/js/bootbox.js
 
 # bootstrap-chosen
-/Content/less/chosen
-/Content/img/chosen-sprite.png
-/Content/js/chosen.jquery.js
+/Sections/Common/Content/less/chosen
+/Sections/Common/Content/img/chosen-sprite.png
+/Sections/Common/Content/js/chosen.jquery.js
 
 # bundle results are generated
-/Content/bundle.result.json
+/bundle.result.json

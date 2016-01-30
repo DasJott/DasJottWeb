@@ -2,11 +2,11 @@ using System.Net;
 using HtmlAgilityPack;
 using Microsoft.Extensions.Logging;
 
-namespace DasJott.Backend.Services {
+namespace DasJott.Services {
   public class WebService {
-    
+
     protected readonly ILogger Logger;
-    
+
     public WebService(ILogger logger)
     {
       Logger = logger;
@@ -16,7 +16,7 @@ namespace DasJott.Backend.Services {
     {
       using (var log = Logger.BeginScope("WebService.RequestHtml")) {
         HtmlDocument doc = new HtmlDocument();
-        
+
         using (var client = new WebClient())
         {
           Logger.LogVerbose("Using WebClient on url: \"{0}\"", url);

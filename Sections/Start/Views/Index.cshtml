@@ -1,0 +1,7 @@
+﻿@inject DasJott.Interfaces.Services.IBundleService Bundler
+@{
+  Layout = "~/Sections/Common/Views/_Layout.cshtml";
+  Bundler.IncludeBundle("start");
+  Bundler.IncludeBundle("about");
+}
+
