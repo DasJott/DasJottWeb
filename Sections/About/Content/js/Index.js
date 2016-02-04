@@ -1,8 +1,12 @@
 $(function() {
   $('.showAboutModal').click(function() {
     loadSpinner.show();
-    $('#modalContainer').load('~/About/Modal', '', function(response, status, xhr) {
-      setupTabs();
+    $('#modalContainer').load('~/about/modal', '', function(response, status, xhr) {
+      if (status === "error") {
+        $(this).text("Error loading about :(");
+      } else {
+        setupTabs();
+      }
       loadSpinner.hide();
     });
   });

@@ -18,7 +18,17 @@ namespace DasJott.About
 
     public IActionResult Index()
     {
-      return View();
+      Logger.LogVerbose("Index called");
+      return View("Index");
+    }
+
+    [Route("about/modal")]
+    public IActionResult Modal()
+    {
+      Logger.LogVerbose("Modal called");
+      Logger.LogVerbose("Setting DoModal to true and use Index view");
+      ViewBag.DoModal = true;
+      return View("Index");
     }
   }
 }

@@ -1,5 +1,9 @@
 @inject DasJott.Interfaces.Services.IBundleService Bundler
-@Bundler.IncludeBundle("about");
+@{
+  if (ViewBag.DoModal) {
+    Layout = "Modal.cshtml";
+  }
+}
 
 <ul id="mainAboutSections" class="nav nav-tabs nav-justified">
   <li class="active"><a href="#">Über Das Jott</a></li>
@@ -11,10 +15,26 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 col-xs-12">
+        <h3><b>Ehemann</b></h3>
+        <p>Seit 2013</p>
+        <p>Eine liebe Frau an meiner Seite</p>
+        <p>Habe ihr viel zu verdanken</p>
       </div>
       <div class="col-md-4 col-xs-12 text-center">
+        <h3><b>Vater</b></h3>
+        <p>Ein Sohn</p>
+        <p>Alter: 20 Monate</p>
+        <p>Knalleblond, Lebhaft, riesig (91cm)</p>
+        <p>Liebt Musik und tanzt sehr gern</p>
+        <p>Extrem technikbegeistert</p>
       </div>
       <div class="col-md-4 col-xs-12 text-center">
+        <h3><b>Softwareentwickler</b></h3>
+        <p>Allroundtalent!</p>
+        <p>Erfahren in C, C++, C#, Java, Vala</p>
+        <p>Außerdem in Javasript (jQuery), CSS, XML, HTML</p>
+        <p>Technologien: ASP.NET, MVC, Ajax, Json</p>
+        <p>IDEs: Visual Studio, VSCode, Eclipse, IntelliJ</p>
       </div>
     </div>
   </div>
@@ -22,6 +42,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 col-xs-12">
+        <h3><b>Freizeitbeschäftigungen</b></h3>
+        <p>Meine Freizeit gehört an erster Stelle meinem Sohn und meiner Frau.</p>
+        <p>Gute Musik muss immer dabei sein</p>
+        <p>Filme sollten anspruchsvoll und was für den Kopf sein</p>
+        <p>Ferngesteuerte Hubschrauer machen gelegentlich Spaß</p>
+        <p>Ansonsten beschäftige ich mich gern mit der Softwareentwicklung</p>
+        <p>Ich habe sogar <a href="https://www.github.com/DasJott/">ein wenig auf GitHub</a></p>
       </div>
     </div>
   </div>
@@ -29,6 +56,34 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 col-xs-12">
+        <h3><b>Beruflicher Werdegang</b></h3>
+        <ul>
+          <li>Als Experte im Shellscripting in ein Programmierteam aufgenommen</li>
+          <li>In Basicsprache u.A. ein Brennprogramm geschrieben</li>
+          <li>Aufmerksamkeit der Firma yellowTAB geweckt</li>
+          <li>Buchhaltungs-Suite für das OS ZETA geschrieben</li>
+          <li>Beim Portieren der Basicsprache von Zeta nach Linux C/C++ gelernt</li>
+          <li>In Hamburg bei der Firma Zweitgeist an der Web2.0-Software Weblin gearbeitet</li>
+          <li>Kurzausflug zu Bigpoint, Programmierung in PHP und Javascript</li>
+          <li>Programmierung in C# bei der Firma HHK</li>
+          <ul>
+            <li>Webprogrammierung mit ASP.NET, Webforms und jeder Menge Javascript</li>
+            <li>Desktopsoftwaretools für kleine und große Aufgaben</li>
+          </ul>
+          <li>C/C++ Programmierung in der Welt der Vermessungssoftware</li>
+          <li>Shellscripting, Linuxprogrammierung, Androidentwicklung</li>
+          <li>Java-Desktop und Webentwicklung</li>
+          <ul>
+            <li>Java-Anwendungen zur Aggregation und grafischer Darstellung großer Datenmengen</li>
+            <li>Webentwicklung in ASP.NET mit VisualBasic und C# und Javasript, CofeeScript, jQuery, CSS, Less</li>
+          </ul>
+          <li>Freizeitlich:</li>
+          <ul>
+            <li>Kleinere Projekte zum Kennenlernen von Vala</li>
+            <li>Webentwicklung in ASP.NET 5 vNext unter Ubuntu-Linux</li>
+            <li>Mobile-Entwicklung mit QT</li>
+          </ul>
+        </ul>
       </div>
     </div>
   </div>
