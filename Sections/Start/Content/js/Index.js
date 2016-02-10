@@ -14,7 +14,7 @@ $(function() {
     var $a = $('#mainMenu > li > a').first();
     var url = $a.attr("href")
     var title = $a.text();
-    loadContent($content, url, title, 100, fadeIn);
+    loadSectionContent($content, url, title, 100, fadeIn);
   }
 
   // smooth page changes from main menu
@@ -38,7 +38,7 @@ $(function() {
           if (url == '/') {
             document.location.pathname = url;
           } else {
-            loadContent($content, url, title, fadeOut, fadeIn);
+            loadSectionContent($content, url, title, fadeOut, fadeIn);
           }
         });
       }
@@ -46,7 +46,7 @@ $(function() {
     });
   }
 
-  function loadContent($content, url, title, fadeIn) {
+  function loadSectionContent($content, url, title, fadeIn) {
     if (!fadeIn) { fadeIn = 300; }
 
     logger.debug("Ajax loading");
@@ -59,9 +59,9 @@ $(function() {
         $('#bodyContentError').text("An error occured").fadeIn();
       } else {
         document.title = title + " - " + document.title;
-        $content.fadeIn(fadeIn);
+        $(this).fadeIn(fadeIn);
       }
-    })
+    });
 
   }
 
