@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
-using DasJott.Common.Models;
+﻿using Microsoft.AspNet.Mvc;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using DasJott.Database;
 using DasJott.Database.Extensions;
-using System;
 using DasJott.News.Models;
 using DasJott.Common.Controllers;
-using DasJott.Services;
 
 namespace DasJott.News
 {
-  public class NewsController : BaseController
+    public class NewsController : BaseController
   {
     protected readonly ILogger<NewsController> Logger;
     protected DjContext db;
