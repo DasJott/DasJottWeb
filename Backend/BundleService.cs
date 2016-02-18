@@ -12,18 +12,29 @@ namespace DasJott.Services {
     public enum RenderType {
       STYLES, SCRIPTS
     }
+    public string RenderTypeString(RenderType t)
+    {
+      switch (t) {
+        case RenderType.SCRIPTS: return "scripts";
+        case RenderType.STYLES: return "styles";
+      }
+      return "";
+    }
 
     protected static string bundleResult = Path.Combine(".", "bundle.result.json");
+    //protected static string bundleResult = Path.Combine(".", "bundle.result.json");
 
     private readonly IApplicationEnvironment _appEnvironment;
-    private readonly Dictionary<RenderType, List<string>> _toBeRendered = new Dictionary<RenderType, List<string>>();
-    private JObject _jObject = null;
-    private readonly ILogger _logger = null;
+    private readonly ILogger<BundleService> _logger = null;
 
-    public BundleService(IApplicationEnvironment appEnvironment, ILoggerFactory loggerFactory)
+    private readonly Dictionary<RenderType, List<string>> _toBeRendered = new Dictionary<RenderType, List<string>>();
+    private List<string> _includeOrder = null;
+    private JObject _jObject = null;
+
+    public BundleService(IApplicationEnvironment appEnvironment, ILogger<BundleService> logger)
     {
       _appEnvironment = appEnvironment;
-      _logger = loggerFactory.CreateLogger("BundleService");
+      _logger = logger;
       _logger.LogDebug("Application base path: \"{0}\"", _appEnvironment.ApplicationBasePath);
       _logger.LogInformation("BundleService created");
     }
@@ -38,25 +49,45 @@ namespace DasJott.Services {
       return _jObject;
     }
 
-    protected HtmlString GetObject(string bundleName, RenderType t) {
-      string type = "";
-      switch (t) {
-        case RenderType.SCRIPTS:
-        type = "scripts";
-        break;
-        case RenderType.STYLES:
-        type = "styles";
-        break;
-      }
+    protected JToken GetBundleResultToken(string path)
+    {
+      JObject jSon = GetBundleResult();
+      return jSon.SelectToken(path);
+    }
+
+    protected string GetHtmlInclude(string bundleName, RenderType t) {
+      string type = RenderTypeString(t);
 
       string path = string.Format("{0}.{1}", bundleName, type);
-      JObject jSon = GetBundleResult();
-      JToken token = jSon.SelectToken(path);
+      JToken token = GetBundleResultToken(path);
       if (token != null) {
-        return new HtmlString(token.ToString());
+        return token.ToString();
       }
 
       return null;
+    }
+
+    protected List<string> GetOrderList()
+    {
+      // one day we will get the order from the bundle result as well
+      // but for now, we need to hack a little
+
+      if (_includeOrder == null) {
+        _includeOrder = new List<string>();
+        _logger.LogVerbose("Creating order list");
+
+        string fileName = Path.Combine(_appEnvironment.ApplicationBasePath, "bundle.order");
+        string[] lines = File.ReadAllLines(fileName);
+
+        foreach (var bundle in lines) {
+          if (!string.IsNullOrEmpty(bundle)) {
+            _includeOrder.Add(bundle.Trim());
+          }
+        }
+        _logger.LogVerbose("Copied {0} bundle names", _includeOrder.Count);
+      }
+
+      return _includeOrder;
     }
 
     protected virtual void Include(RenderType key, string bundleName) {
@@ -66,8 +97,12 @@ namespace DasJott.Services {
         var list = new List<string>();
         _toBeRendered.Add(key, list);
       }
-      _toBeRendered[key].Insert(0, bundleName);
-      _logger.LogVerbose("Include added {0} to key {0}", bundleName, key.ToString());
+      if (!_toBeRendered[key].Contains(bundleName)) {
+        _toBeRendered[key].Add(bundleName);
+        _logger.LogVerbose("Include added {0} to key {0}", bundleName, key.ToString());
+      } else {
+        _logger.LogInformation("Include was already added {0} to key {0}", bundleName, key.ToString());
+      }
     }
 
     protected virtual HtmlString Render(RenderType key) {
@@ -75,10 +110,16 @@ namespace DasJott.Services {
       var sb = new StringBuilder();
 
       if (_toBeRendered.ContainsKey(key)) {
-        foreach (var bundleName in _toBeRendered[key]) {
-          var bundleData = GetObject(bundleName, key);
-          if (bundleData != null) {
-            sb.AppendLine(bundleData.ToString());
+
+        // go through the order of bundles within the config file
+        foreach (var bundle in GetOrderList()) {
+          _logger.LogVerbose(" trying bundle {0}", bundle);
+          if (_toBeRendered[key].Contains(bundle.ToString())) {
+            _logger.LogVerbose(" rendering {0}", bundle);
+            var html = GetHtmlInclude(bundle, key);
+            if (html != null) {
+              sb.AppendLine(html);
+            }
           }
         }
       } else {
