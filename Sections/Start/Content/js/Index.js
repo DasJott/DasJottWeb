@@ -5,6 +5,7 @@ $(function() {
   // load start page
   loadFirstPage(500);
 
+  var docTitle = document.title;
   /////////////////////////////////////////////////////////////////////////////
 
   // load first page
@@ -49,7 +50,7 @@ $(function() {
   function loadSectionContent($content, url, title, fadeIn) {
     if (!fadeIn) { fadeIn = 300; }
 
-    logger.debug("Ajax loading");
+    logger.debug("Loading section content");
 
     $content.load(url, '', function(responseText, textStatus, jqXHR) {
       logger.debug("loading complete: " + textStatus);
@@ -58,7 +59,7 @@ $(function() {
         win.document.write(responseText);
         $('#bodyContentError').text("An error occured").fadeIn();
       } else {
-        document.title = title + " - " + document.title;
+        document.title = title + " - " + docTitle;
         $(this).fadeIn(fadeIn);
       }
     });
