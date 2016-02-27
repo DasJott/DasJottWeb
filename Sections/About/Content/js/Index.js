@@ -1,9 +1,9 @@
 $(function() {
   $('.showAboutModal').click(function() {
     loadSpinner.show();
-    $('#modalContainer').load('~/about/modal', '', function(response, status, xhr) {
+    $('#modalContainer').load('/about/modal', '', function(response, status, xhr) {
       if (status === "error") {
-        $(this).text("Error loading about :(");
+        msg.error("Fehler beim Laden des Abouts :(");
       } else {
         setupTabs();
       }
