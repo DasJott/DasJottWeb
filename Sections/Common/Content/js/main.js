@@ -11,7 +11,8 @@ $(function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 window.loadSpinner = new JottLoadSpinner();
-window.logger = new Utils.Logger();
+window.logger = new Utils.Logger(true);
+window.msg = new Utils.UIMsg(true);
 
 $('.chosen-select').chosen();
 
