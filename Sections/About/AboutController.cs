@@ -22,7 +22,7 @@ namespace DasJott.About
       return View("Index");
     }
 
-    [Route("about/modal")]
+    [Route("about/modal"), HttpGet]
     public IActionResult Modal()
     {
       Logger.LogVerbose("Modal called");
