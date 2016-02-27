@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNet.Mvc.Razor;
-using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 
 namespace DasJott
 {
-  public class ModularViewLocator : IViewLocationExpander
+    public class ModularViewLocator : IViewLocationExpander
   {
     public ILogger Logger { get; set; }
 
