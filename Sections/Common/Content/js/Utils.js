@@ -84,6 +84,8 @@ Utils.UIMsg = function(active) {
   var theTimer = null;
   var fadingTime = 300;
 
+  $('#generalAlert').hide();
+
   var pushMessage = function(mode, title, txt, duration)
   {
     var time = typeof(duration) === 'undefined' ? 4000 : duration;
